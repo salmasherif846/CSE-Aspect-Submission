@@ -28,14 +28,13 @@ public class ResourceControllerWithAspect {
     public String deleteResource() {
         return "DELETE request received";
     }
+}
+@Aspect
+@Component
+class LoggingAspect {
 
-    @Aspect
-    @Component
-    public static class LoggingAspect {
-
-        @Before("execution(* com.example.demo.ResourceControllerWithAspect.*(..))")
-        public void logBeforeMethod() {
-            System.out.println("Aspect Advice: A controller method is about to be called");
-        }
+    @Before("execution(* com.example.demo.ResourceControllerWithAspect.*(..))")
+    public void logBeforeMethod() {
+        System.out.println("Aspect Advice: A controller method is about to be called");
     }
 }
